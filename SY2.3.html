@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>读取并显示文本内容</title>
+</head>
+<body>
+<input type="file" id="file">
+<div name="result" id="result"></div>
+<script>
+    if (window.File&&window.FileList&&window.FileReader&&window.Blob){
+            document.getElementById('file').addEventListener("change",fileSelect,false);
+        } else {
+            document.write("您的浏览器不支持FileApi");
+        }
+    function fileSelect(e) {
+        e=e||window.event;
+        var files=e.target.files;
+        var f=files[0];
+        var reader=new FileReader();
+        reader.readAsText(f)
+        reader.onload=function (f) {
+            document.getElementById("result").innerHTML=this.result;
+        }
+    }
+</script>
+</body>
+</html>
+//读取txt文件有可能出现乱码，这是因为文本文件默认编码是ANSI，只需将文件编码改为UTF-8即可，还有这边显示的内容默认是不换行的。

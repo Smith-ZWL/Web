@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>读取图片内容</title>
+</head>
+<body>
+<input type="file" id="file">
+<div name="result" id="result"></div>
+<script>
+    if (window.File && window.FileList && window.FileReader && window.Blob) {
+              document.getElementById("file").addEventListener("change", fileSelect, false);
+          } else {
+              document.write("您的浏览器不支持FileApi");
+          }
+          //检测浏览器是否支持HTML5 File API。
+      function fileSelect(e) {
+          e=e||window.event;
+          var files=e.target.files;
+          var f=files[0];
+          if(!/image\/\w+/.test(f.type)) {
+              alert("这里需要的是图片！");
+              return false;
+          }
+          var reader=new FileReader();
+          reader.readAsDataURL(f);
+          reader.onload=function(f){
+              document.getElementById("result").innerHTML="<img src="+this.result+">";
+          }
+      }
+</script>
+</body>
+</html>
+//莫名其妙将this.result外面的双引号改为单引号就没用。

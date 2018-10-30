@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>小打小闹</title>
+    <p id="001">欢迎来到HTML</p>
+    <a href="http://zjg.just.edu.cn" target="_blank">欢迎来到张家港校区</a>
+    <br/>
+    <a href="" target="_blank">测试用</a>
+    <base href="http://baidu.com" target="_blank">
+    <br/>
+    <script >
+        function test() {
+            var str = "欢迎来到JS\n1.欢迎\n2.不欢迎\n3.哈哈";
+            alert(str);
+        }
+        // alert("页面加载完毕！")
+        document.write("欢迎来到JS" + "<br/>")
+        document.write("欢迎来到JS \n Welcome To JS" + "<br/>")
+        document.writeln("欢迎来到JS" + "<br/>" + "欢迎来到JS" + "<br/>")
+        document.getElementById("001").innerHTML="欢迎来到JavaScript!"
+        document.write("<p>My First JavaScript!</p>")
+        document.write("Hello world" + "<br/>")
+        var string1 = new Array()
+        string1[0]="李大狗";
+        string1[1]="陈二狗";
+        string1[2]="季大傻";
+        for (i=0;i<string1.length;i++) {
+            document.write(string1[i]+"<br/>")
+        }
+        var string2 = new Array("李大狗","陈二狗","季大傻")
+        for (i=0;i<string2.length;i++) {
+            document.write(string2[i]+"<br/>")
+        }
+        var string3=["李大狗","陈二狗","季大傻"]
+        for (i=0;i<string3.length;i++) {
+            document.write(string3[i]+"<br/>")
+        }
+        var person={
+            name:"Bill",
+            old:"45",
+            adress:"江科大张家港校区",
+            id:8848
+        };
+        var newestname=person.name
+        var newestadress=person.adress
+        var newestid=person["id"]
+        document.write(newestname+"<br/>"+newestadress+"<br/>"+newestid+"<br/>")
+        var day = new Date().getDay()
+        switch(day){
+            case 0:
+                x="Today is Sunday!"
+                break
+            case 1:
+                x="Today is Monday!"
+                break
+            case 2:
+                x="Today is Tuesday!"
+                break
+            case 3:
+                x="Today is Wednsday!"
+                break
+            case 4:
+                x="Today is Thursday!"
+                break
+            case 5:
+                x="Today is Friday!"
+                break
+            case 6:
+                x="Today is Saturday!"
+                break
+            default:
+                x="WTF"
+        }
+        document.write(x+"<br/>")
+        var person1={name:"季傻涛",adress:"张家港校区",ID:"8848"}
+        var txt="生源信息:"
+        for(x in person1){
+            txt=txt+person1[x]+"&nbsp;"
+        }
+        document.write(txt + "<br/>")
+        var x = prompt("请输入0-10之间的数：","")
+        try{
+            if (x>10)
+                throw{name1:"Err1",message:"该值太大!"}
+            else if (x<0)
+                throw{name1:"Err2",message:"该值太小!"}
+            else if (isNaN(x))
+                throw{name1:"Err3",message:"该值不是数字！"}
+            else document.write("您输入了:"+ x)
+        }catch(err){
+            alert(err.name1+err.message)
+        }
+        document.write(Date( ))
+    </script>
+    <input type="button" value="测试" onclick="test()">
+    <br/>
+    <embed src="C:\Users\mm\Music\韩安旭 - 多幸运.mp3" type="歌曲" autostart="false">
+    <!--适用于IE，chrome需要插件-->
+    <br/>
+    <embed src="D:\Ellie Goulding - Love Me Like You Do (Fifty Shades of Grey).mp4" type="视频" height="200" width="300" autostart="false">
+    <br/>
+    <!--<object data="C:\Users\mm\Music\韩安旭 - 多幸运.mp3" type="歌曲" height="200" width="300"></object>-->
+    <!--浏览器不支持？-->
+    <style>
+        body{background-color: yellow}
+    </style>
+</head>
+<body>
+    <form name="傻子" action="" method="post">
+        <select name="fruit" id="">
+            <option value="pea">Pea</option>
+            <option value="apple" selected>Apple</option>
+            <option value="banana">Banana</option>
+        </select>
+        <br/><br/>
+        <textarea name="" id=" " cols="30" rows="10">Welcome to HTML5</textarea>
+        <br/>
+        我爱的水果:
+        <input type="checkbox" name="fruit" value="pea">Pea
+        <input type="checkbox" name="fruit" value="apple">Apple
+        <input type="checkbox" name="fruit" value="banana">Banana
+        <br/>
+    </form>
+</body>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>图片更换</title>
+    <h1 id="id1">My First Heading</h1>
+    <input type="button" onclick="document.getElementById('id1').style.color='red'" value="确定">
+    <br><br>
+    <input type="button" value="监听器" id="bt">
+</head>
+<body onload="cC()">
+<img src="img/杨3.jpg" alt="杨超越" id="img" align="right" height="80" width="50">
+<script>
+    function showmsg(){
+        alert("事件处理程序")
+    }
+    function cC(){
+        if (navigator.cookieEnabled==true){
+            alert("已启用Cookie")
+        } else {
+            alert("未启用Cookie")
+        }
+    }
+    document.getElementById("img").src="img/杨2.jpg"
+    var bt=document.getElementById("bt")
+    bt.addEventListener("click",showmsg,false)
+    // bt.removeEventListener("click",showmsg,false)
+</script>
+<p>提示框告示是否已启用cookie</p>
+</body>
+</html>

@@ -1,0 +1,144 @@
+<script>
+function xxx(){
+return xxx;
+}
+
+var redult = function xxx(){
+return xxx
+}
+</script>
+
+输出
+alert("")
+document.write();
+console.log("");
+document.innerHTML=xxx;//<>...</>
+
+var
+字符串、数字、布尔、数组、对象、null、undefined
+var employees = new Array();
+employees[0] = new Array("","","");
+employees = ["","",""];
+var employee  = {fn: "",ln: "", age: 33};
+var name = null;
+
+===(值和类型相等，全等）
+
+1.循环
+for
+for in
+while
+do...while
+
+<input type="radio" name="gender" value="male" checked/>
+<input type="radio" name="gender" value="female" checked/>
+var items = document.getElementsByName(" "); 
+var i;
+for (i=0;i<items.length;i++){
+	alert(items[i]);
+}
+
+var employees = new Array();
+employees[0] = "zhangsan";
+employees[1] = "lisi";
+employees[2] = "wangwu";
+ for( emp in employees){
+    document.write(employees[emp] + "<br/>")
+}
+
+var i=1;
+while(i<=10){
+   document.write(i++ + "<br/>)
+}
+
+var j=0;
+do{
+	document.write(j++ + "<br/>)
+}while(j<=10)
+
+var num = 0;
+outer:
+for(var i=0;i<10;i++){
+   for(var j=0;j<10;j++){
+       if (i==5&&j==5){
+	document.write("break outer");
+	break outer;
+	}
+	num++；
+               }
+         }
+console.log(num);
+
+try{
+
+
+}	catch(err){
+}	finally{
+
+}
+
+throw:创建自定义错误
+throw exception
+二、HTML DOM
+DOM: Document Object Model
+定义了访问和操作HTML文档的标准方法
+树
+
+标签 元素element
+层级：父parent， 子child， 兄弟sibling
+DOM：可编程的
+
+借助可编程的DOM,JS有能力创建动态的HTML
+HTML元素
+HTML属性
+CSS样式
+对页面事件作出响应
+1.查找HTML元素
+（1）根据id
+document.getElementById("id");
+(2)根据name
+document.getElementsByName("gender");
+(3)根据标签名
+document.getElementByTagName("p")
+<p id="p1"></p>
+<p id="p2"></p>
+<p id="p3"></p>
+(4)根据类名
+<style>
+.center:{ text-align:center;}
+</style>
+<p id="p1" class="center"></p>
+<p id="p2"></p>
+<p id="p3" class="center"></p>
+var x = document.getElementByClassName("center")
+
+2.改变HTML内容
+(1)document.write(Date());
+(2)element.inner.HTML = new HTML;
+
+3.
+element.attribute = new value;
+
+3.改样式
+<div id="div1" style="color:red;"></div>
+element.style.property = new style;
+document.getElementById("div1").style.color="blue";//JS
+document.getElementById("div1").style.textAlign="left"//CSS
+document.style.visibility = "hidden";
+document.style.visibility = "visible";
+
+4.DOM事件
+点击鼠标
+网页/图像加载load
+鼠标移动到元素上mouseover/mouseout
+输入字段改变change
+表单提交submit
+按键的过程mousedown/mouseup/click
+获得焦点focus/blur
+
+捕获阶段、目标阶段、冒泡阶段
+捕获阶段：根节点逐层向下传递，流经各个DOM节点
+目标阶段：事件已经到达目标节点
+冒泡阶段：一层一层向上冒泡，直到访问到节点
+ 
+

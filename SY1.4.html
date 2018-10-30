@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>省市级联功能</title>
+</head>
+<script>
+    function Citychoose() {
+        var selProvince=document.userform.Province.value;
+        var citylist=new Array();
+        citylist["江苏省"]=["南京市","镇江市","盐城市"];
+        citylist["浙江省"]=["杭州市","绍兴市","温州市"];
+        citylist["福建省"]=["福州市","泉州市","汕尾市"];
+        document.userform.City.options.length=0;
+        for(var j in citylist[selProvince]){
+            var selCity=new Option(citylist[selProvince][j],citylist[selProvince][j]);//文本和值
+            document.userform.City.options.add(selCity);
+        }
+    }
+</script>
+<body>
+<form name="userform" method="post" >
+    <table border="0" align="center">
+        <tr>
+            <td>省份</td>
+            <td>
+                <select name="Province" id="Province" onchange="Citychoose()">
+                    <option>--请选择开户账号的省份--</option>
+                    <option value="江苏省">江苏省</option>
+                    <option value="浙江省">浙江省</option>
+                    <option value="福建省">福建省</option>
+                 </select>
+            </td>
+        </tr>
+        <tr>
+            <td>城市</td>
+            <td>
+                <select name="City" id="City" >
+                    <option>--请选择开户账号的城市--</option>
+                </select>
+            </td>
+        </tr>
+    </table>
+</form>
+</body>
+</html>
+<!--这边犯了一个无脑的错误表单名字name属性写成了id以至于找了好长时间才找出错误,将省市抽象成一个数组，使得代码量减少，new option（"文本","值"-->

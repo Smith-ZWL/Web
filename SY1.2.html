@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>图片切换</title>
+    <script>
+        function InitImage() {
+            document.getElementById("gameTab2").style.display="none";
+            document.getElementById("game").style.display="none";
+            document.getElementById("mobileTab1").style.display="none";
+        }
+        function TabChange(show,hide) {
+            document.getElementById(show).style.display="block";
+            document.getElementById(hide).style.display="none";
+            document.getElementById(show+"Tab1").style.display="none";
+            document.getElementById(show+"Tab2").style.display="block";
+            document.getElementById(hide+"Tab1").style.display="block";
+            document.getElementById(hide+"Tab2").style.display="none";
+        }
+    </script>
+
+</head>
+<body onload="InitImage()">
+    <table border="0" align="center" cellpadding="0" cellspacing="0">
+        <tr>
+            <td>
+                <img id="gameTab1" src="img/gameTab1.jpg" width="83" height="47" onmouseover="TabChange('game','mobile')">
+                <img id="gameTab2" src="img/gameTab2.jpg" width="83" height="49">
+            </td>
+            <td>
+                <img id="mobileTab1" src="img/mobileTab1.jpg" width="81" height="49" onmouseover="TabChange('mobile','game')">
+                <img id="mobileTab2" src="img/mobileTab2.jpg" width="81" height="47">
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2">
+                <img id="game" src="img/game.jpg" width="164" height="169">
+                <img id="mobile" src="img/mobile.jpg" width="165" height="171">
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2">
+                <img id="=fiy" src="img/fly.jpg" width="165" height="43">
+            </td>
+        </tr>
+    </table>
+</body>
+</html>
+<!--TabChange函数中用未知参数值加上图片名重合的部分减少了冗余代码，更清晰明了，但过多图片且名字易混淆使得哪个图片"block"，哪个"none"容易混淆;还是希望有更好的解决方法。-->
+<!--注意从鼠标从gameTab1移动到mobileTab1上时，TabChange()函数参数的变化。-->

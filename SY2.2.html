@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>读取文件和图片</title>
+    <script>
+        window.onload=function () {
+            if (window.File&&window.FileList&&window.FileReader&&window.Blob){
+            document.getElementById('Files').addEventListener("change",fileSelect,false);
+        } else {
+            document.write("您的浏览器不支持FileApi");
+        }
+        //检测浏览器是否支持HTML5 File API。
+        function fileSelect(e){
+            e=e||window.event;//兼顾浏览器兼容性
+            var files=e.target.files;
+            var output=[];
+            for (var i=0,f;f=files[i];i++){
+                output.push('<li><strong>'+f.name+'</strong>('+f.type+')-'+f.size+'bytes</li>')
+            }
+            document.getElementById('Lists').innerHTML='<ul>'+output.join('')+'</ul>'
+        }
+        //使用FileList接口和File接口显示选择文件的名称和大小。
+        }
+
+    </script>
+</head>
+<body>
+    <input type="file" id="Files" name="files[]" multiple>
+    <!--定义选择文件的表单控件-->
+    <div id="Lists"></div>
+</body>
+</html>
+//平常JS代码放在head或body我都是无所谓的，这次遇到了麻烦。
+这边如果将JS中的代码放到head中是无效的，JS在打开网页时被立即执行，文档还未加载完成就加载了JS代码，换种window.onload=function(){}将JS代码包裹在内放在head中使得只有加载了文档才能执行JS代码，这样就可以了。
+所以最好将JS放到body中。

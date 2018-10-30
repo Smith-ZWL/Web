@@ -1,0 +1,12 @@
+DOM
+节点
+文档 document
+HTML元素
+文本 文本节点
+属性 属性节点
+注释 注释节点
+
+根节点、父、子、兄弟
+JS创建动态的HTML
+
+document.getElementById("id");

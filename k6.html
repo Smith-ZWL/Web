@@ -1,0 +1,28 @@
+<html>
+<head>
+    <meta charset="UTF-8">
+<script>
+function getOptions() {
+  var x=document.getElementById("mySelect");
+  var y="";
+  for (i=0;i<x.length;i++) {
+    y+=(i+1)+"."+x.options[i].text;
+    y+="<br />";
+  }
+  document.write(y);
+}
+</script>
+</head>
+<body>
+<form>
+请选择您喜欢的运动：
+<select id="mySelect">
+  <option>足球</option>
+  <option>篮球</option>
+  <option>乒乓球</option>
+  <option>羽毛球</option>
+</select>
+<input type="button" onclick="getOptions()" value="输出所有选项">
+</form>
+</body>
+</html>

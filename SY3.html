@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>使用Canvas API画图</title>
+</head>
+<body>
+<canvas id="canvasId" height="300" width="300"></canvas>
+<script>
+    var sun=new Image();
+    var moon=new Image();
+    var earth=new Image();
+    function init() {
+        sun.src="img/sun.png";
+        moon.src="img/moon.png";
+        earth.src="img/earth.png";
+        setInterval(draw,10);//第一个参数为函数名，第二个参数为两次动画的时间间隔（毫秒)
+    }
+    function draw() {
+        var ctx=document.getElementById("canvasId").getContext("2d");
+        ctx.clearRect(0,0,300,300);//清除画布
+        ctx.fillStyle="rgba(0,0,0)";//填充颜色
+        ctx.fillRect(0,0,300,300);//填充范围
+        ctx.save();
+        //绘制太阳
+        ctx.drawImage(sun,125,125,50,50);//在（125，125）处绘制图片，并将其缩放到（50，50）的高度和宽度
+        //绘制地球轨道
+        ctx.strokeStyle="rgba(0,153,255,0.4)";
+        ctx.beginPath();
+        ctx.arc(150,150,100,0,Math.PI*2,false);
+        ctx.stroke();
+        ctx.closePath();
+        //绘制地球
+        ctx.save();
+        ctx.translate(150,150);
+        var time=new Date();
+        ctx.rotate(((2*Math.PI)/60)*time.getSeconds()+((2*Math.PI)/60000)*time.getMilliseconds());
+        ctx.translate(105,0);
+        ctx.drawImage(earth,-12,-12);
+        //绘制月球
+        ctx.save();
+        ctx.rotate(((2*Math.PI)/6)*time.getSeconds()+((2*Math.PI)/6000)*time.getMilliseconds());
+        ctx.translate(0,28.5);
+        ctx.drawImage(moon,-3.5,-3.5);
+        //恢复绘图状态
+        ctx.restore();
+        ctx.restore();
+    }
+    window.addEventListener("load",init,true);
+</script>
+</body>
+</html>

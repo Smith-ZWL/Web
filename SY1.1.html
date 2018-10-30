@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>广告</title>
+    <script>
+        var advInitTop;
+        var closeInitTop;
+        function inix() {
+            advInitTop=document.getElementById("advLayer").style.pixelTop;
+            closeInitTop=document.getElementById("closeLayer").style.pixelTop;
+        }
+        function move() {
+            document.getElementById("advLayer").style.pixelTop=advInitTop+document.documentElement.scrollTop;
+            document.getElementById("closeLayer").style.pixelTop=closeInitTop+document.documentElement.scrollTop;
+        }
+        function closeadv() {
+            document.getElementById("advLayer").style.display="none";
+            document.getElementById("closeLayer").style.display="none";
+        }
+        window.onscroll=move;
+    </script>
+</head>
+<body onload="inix()">
+    <div id="advLayer" style="position:absolute;left:171px;top:129px;width:144px;height:95px;z-index:1;"><A HREF="http://www.zhaopin.com"><img src="img/adv.jpg" alt="广告"></A></div>
+    <div id="closeLayer" onclick="closeadv()" style="position:absolute;left:171px;top:132px;width:27px;height:19px;z-index:2;"><img src="img/closePic.jpg" alt="关闭"></div>
+    <div class="body" style="text-align: center"><img src="img/contentpic.jpg"0 alt="页面" style="margin: 0 auto"></div>
+</body>
+</html>
+<!--这里用document.body.scrollTop用于获取网页随鼠标滚动被卷去的高度好像并不奏效，将body改为documentElement方可奏效，试过将style标签中position属性改为fixed广告图片也可以相对于页面静止不动，-->
+<!--但相对于前者，后者广告相对于浏览器窗口是固定的，窗口滚动它也不动，而前者广告的div层跟随鼠标移动，所以看起来前者有视觉延迟效果，后者则完全不动。在IE浏览器有效，在Chrome浏览器无效。-->

@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head ondragstart="return false">
+    <meta charset="UTF-8">
+    <title>CSS3拖拽特效</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        body{
+            background: #000000;
+        }
+        #perspective{
+            perspective: 800px;/景深 3D/
+        }
+        .img-wrap{
+            position: relative;
+            width: 133px;
+            height: 200px;
+            transform-style: preserve-3d;/设置3D场景的风格/
+            border:1px solid #000;
+            margin: 150px auto;
+            transform: rotateX(-20deg) rotateY(0deg);
+        }
+        .img-wrap img{
+            position: absolute;
+        }
+    </style>
+</head>
+<body>
+<div id="perspective">
+    <div class="img-wrap">
+        <img src="img/adv.jpg" alt="">
+        <img src="img/adv.jpg" alt="">
+        <img src="img/adv.jpg" alt="">
+        <img src="img/adv.jpg" alt="">
+        <img src="img/adv.jpg" alt="">
+        <img src="img/adv.jpg" alt="">
+        <img src="img/adv.jpg" alt="">
+        <img src="img/adv.jpg" alt="">
+        <img src="img/adv.jpg" alt="">
+        <img src="img/adv.jpg" alt="">
+        <img src="img/adv.jpg" alt="">
+    </div>
+</div>
+<script>
+    /*
+    1.图片布局散开 度数
+    2.入场动画
+     */
+    var oImg = document.getElementsByTagName("img");//通过元素标签名获取元素 把获取到的元素放到oImge变量中
+    var deg = 360/oImg.length;//图片张数
+    //遍历图片元素集合
+    window.onload = function () {
+        for(var i = 0;i < oImg.length ;i++){
+        oImg[i].style.transform = "rotateY(" + i*deg + "deg) translateZ(350px)";
+        oImg[i].style.transition = "1s " + (oImg.length - i)*0.1+ "s";//过渡属性 过渡时间 延迟过渡
+        }
+    }
+    //相册的拖拽 动作分解  鼠标按下 鼠标移动 鼠标松开
+    //拖拽相册 本质上是改变 img-wrap旋转度数 >> 鼠标移动端距离
+    //鼠标移动距离 = 当前移动的鼠标位置 - 上一次鼠标移动的位置
+
+    //按下事件
+
+    var pervX,pervY;
+    var rotateX = -20,
+        rotateY = 0;//兔兔图片相册的初始旋转值
+    var  imgWarp = document.getElementsByClassName("img-wrap")[0];
+    document.onmousedown = function (e) {
+        pervX = e.clientX;
+        pervY  =e.clientY;
+        //鼠标移动事件
+        this.onmousemove = function (e) {
+            var thisX = e.clientX,
+            thisY = e.clientY;//获取当前鼠标位置
+
+            //TODO 假设求得了上一次鼠标的位置
+            var minusX = thisX - pervX,
+                minusY = thisY - pervY;
+            rotateX -= minusX*0.1;
+            rotateY +=minusY*0.1;
+            imgWarp.style.transform = "rotateX("+ rotateX+"deg) rotateY("+rotateY+"deg)";
+            pervX = thisX;//新的值用完就变成旧的值
+                pervY = thisY;
+        }
+        //松开
+        this.onmouseup = function (e) {
+            this.onmousemove = null;//清空移动事件
+        }
+    }
+</script>
+</body>
+</html>

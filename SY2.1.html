@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>HTML5表单新特性</title>
+    <script type="text/javascript">
+     function resCalc() {
+         numa=document.getElementById("num_a").value;
+         numb=document.getElementById("num_b").value;
+         document.getElementById("result").value=Number(numa)+Number(numb);
+        }
+</script>
+</head>
+<body>
+<form  id="form1" name="form1" method="post" onsubmit="return false">
+E-mail:<input type="email" name="user_email">
+<button type="submit" name="submit" id="submit">提交</button>
+<button type="reset" name="reset" id="reset">重置</button><br>
+URL:<input type="url"><br>
+数值:<input type="number" min="1" max="100" value="30"><br>
+日期:<input type="date"><br>
+<input type="month"><br>
+<input type="week"><br>
+<input type="time"><br>
+<input type="datetime"><br>
+<input type="datetime-local"><br>
+颜色:<input type="color"><br>
+datalist:<datalist id="data_list">
+    <option label="baidu" value="http://www.baidu.com">
+    <option label="google" value="http://www.google.com">
+</datalist>
+<input type="url" list="data_list"><br>
+    <input id="num_a">+<input type="num_b">=
+    <output id="result" onforminput="resCalc()"></output>
+    <br>
+    <input type="text" id="text" required>
+    <button onclick="document.getElementById('text').checckValidity()">验证</button>
+    <br>
+    <input type="password" id="password1" required>
+    <button onclick="document.getElementById('password1').setCustomValidity()">验证</button>
+</form>
+</body>
+</html>

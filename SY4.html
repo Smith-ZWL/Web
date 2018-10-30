@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>H5地理定位:获取浏览器所在经度纬度</title>
+</head>
+<body>
+<div id="demo">
+    <button onclick="getLocation()">点击获取位置</button>
+</div>
+<script>
+    var x = document.getElementById("demo");
+    function getLocation() {
+        if(navigator.geolocation){
+            navigator.geolocation.getCurrentPosition(showPosition,showError,{enableHighAccuracy:true,timeout:5000,maximumAge:3000})
+        }
+        else {
+            x.innerHTML = "浏览器不支持Geolocation API";
+        }
+    }
+    function showPosition(position) {
+        x.innerHTML = "Latitude:"+position.coords.latitude+"<br/>Longitude:"+position.coords.longitude;
+        var latlon = position.coords.latitude+","+position.coords.longitude;
+        var img_url = "http://maps.googleapis.com/maps/api/staticmap?center=" +latlon+"&zoom=14&size=400x300&sensor=false";
+        document.getElementById("demo").innerHTML = "<img src='"+img_url+"' />";
+    }
+    function showError(positionError) {
+        switch (positionError.code) {
+            case positionError.PERMISSION_DENIED:
+                x.innerHTML = "用户拒绝获取地理位置的请求"
+                break;
+            case positionError.POSITION_UNAVAILABLE:
+                x.innerHTML = "地理位置信息无法获得"
+                break;
+            case positionError.TIMEOUT:
+                x.innerHTML = "获取地理位置信息请求超时"
+                break;
+            case positionError.UNKNOWN_ERR:
+                x,innerHTML = "发生未知错误"
+                break;
+        }
+    }
+</script>
+</body>
+</html>

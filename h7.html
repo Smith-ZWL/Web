@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>HTML5</title>
+</head>
+<body>
+<form action="" id="form" onsubmit="testForm()" novalidate >
+<p><mark>出行安排</mark></p>
+    <p><time datetime="2018-7-23">今天大暑</time></p>
+<p><meter value="5" min="0" max="10"></meter></p>
+<p><progress value="5" max="10"></progress></p>
+Email:<input type="email"><br>
+URL:<input type="url"><br>
+数值:<input type="number" min="1" max="100" value="30" step="5"><br>
+电话:<input type="tel" name="userTel"><br>
+日期:<input type="date"><br>
+<input type="datetime-local"><br>
+<input type="month"><br>
+<input type="week"><br>
+<input type="time"><br>
+范围:<input name="points" type="range" min="10" max="100"><br>
+搜索:<input type="search"><br>
+颜色:<input type="color"><br>
+<datalist id="url_list">
+    <option label="百度" value="http://www.baidu.com">
+    <option label="谷歌" value="http://www.Google.com">
+</datalist>
+搜索引擎:
+<input type="url" list="url_list" name="link"><br>
+    <video src="D:\Ellie Goulding - Love Me Like You Do (Fifty Shades of Grey).mp4" controls="controls">VIDEO元素</video>
+    <br>
+    <input type="text" name="title" placeholder="职位"><br>
+    <input type="text" name="country_code" pattern="[A-z]{6}"><br>
+    <input type="email" name="emil" id="email">
+    <input type="submit" value="提交">
+</form>
+</body>
+<script>
+    function testForm() {
+        var email=document.getElementById("email")
+        if (email.value==""){
+            alert("请输入email")
+            return false;
+        } else  if (!email.checkValidity()){
+            alert("email格式不正确")
+            return false;
+        }
+    }
+</script>
+</html>

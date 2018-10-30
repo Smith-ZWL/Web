@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>JavaScript</title>
+    <script>
+        // var txt="";
+        // function message(){
+        //     try {
+        //         addlert("welcome guest!");
+        //     }catch (err) {
+        //         txt = "本页面存在错误.";
+        //         txt = "错误描述"
+        //     }
+        // }
+            try {
+                var x = prompt("请输入0-10之间的数： ");
+                if (x > 10)
+                    throw {
+                        name: "Err1",
+                        message: "该值太大！"
+                    }
+                else if (x < 0)
+                    throw {
+                        name: "Err2",
+                        message: "该值太小！"
+                    }
+                else if (isNaN(x))
+                    throw {
+                        name: "Err3",
+                        message: "该值不是数字！"
+                    }
+                else
+                    document.write("您输入了：" + x)
+            } catch (err) {
+                alert(err.name + ":" + err.message);
+            }
+    </script>
+</head>
+<body>
+<!--<script>-->
+    <!--var employees = new Array();-->
+    <!--employees[0] = "zhangsan";-->
+    <!--employees[1] = "lisi";-->
+    <!--employees[2] = "wangwu";-->
+    <!--for( emp in employees){-->
+    <!--document.write(employees[emp] + "<br/>")-->
+<!--}-->
+<!--</script>-->
+</body>
+</html>
