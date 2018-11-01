@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>拖放效果</title>
+    <style>
+        #div1{
+            width: 150px;
+            height: 300px;
+            padding: 10px;
+            border: 1px solid #aaaaaa;
+        }
+    </style>
+</head>
+<body>
+<div id="div1" ondragover="allowDrop(event)" ondrop="drop(event)"></div>
+<img id="drag1" src="img/adv.jpg" alt="" draggable="true" ondragstart="drag(event)" width="118" height="272">
+<script>
+    function drag(ev) {
+         ev.dataTransfer.setData("Text",ev.target.id)
+    }
+    function allowDrop(ev) {
+        ev.preventDefault()
+    }
+    function drop(ev) {
+        ev.preventDefault()
+        var data = ev.dataTransfer.getData("Text")
+        ev.target.appendChild(document.getElementById(data))
+    }
+</script>
+</body>
+</html>
