@@ -30,8 +30,8 @@ datalist:<datalist id="data_list">
     <option label="google" value="http://www.google.com">
 </datalist>
 <input type="url" list="data_list"><br>
-    <input id="num_a">+<input type="num_b">=
-    <output id="result" onforminput="resCalc()"></output>
+    <input id="num_a">+<input id="num_b">=
+    <input id="result" onclick="resCalc()">
     <br>
     <input type="text" id="text" required>
     <button onclick="document.getElementById('text').checckValidity()">验证</button>
@@ -41,3 +41,4 @@ datalist:<datalist id="data_list">
 </form>
 </body>
 </html>
+<!--output标签在Chrome/IE/FireFox都无法使用，可能是浏览器不兼容问题，只能将其改为input用鼠标点击事件来响应函数。-->
