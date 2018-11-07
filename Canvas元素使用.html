@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Canvas</title>
+    <script>
+        window.onload=function draw() {
+            var c = document.getElementById("mycanvas");
+            var ctx = c.getContext("2d");
+            ctx.fillStyle=("#FF0000");
+            ctx.fillRect(0,0,150,75);
+            ctx.beginPath();
+            ctx.moveTo(10,10);
+            ctx.lineTo(10,100);
+            ctx.lineTo(100,100);
+            ctx.lineTo(10,10);
+            ctx.stroke();
+            ctx.beginPath();
+            ctx.moveTo(55,170);
+            ctx.lineTo(150,40);
+            ctx.lineTo(200,150);
+            ctx.lineTo(170,180);
+            ctx.stroke();
+            ctx.beginPath()
+            ctx.moveTo(55,170);
+            ctx.bezierCurveTo(150,40,200,150,170,180);
+            ctx.stroke();
+            ctx.beginPath();
+            ctx.arc(250,30,14,0,Math.PI*2,true);
+            ctx.closePath();
+            ctx.fill();
+            var grd=ctx.createLinearGradient(0,0,175,50);
+            grd.addColorStop(0,"#FF0000");
+            grd.addColorStop(1,"#00FF00");
+            ctx.fillStyle=grd;
+            ctx.fillRect(0,0,175,50);
+            var gradient=ctx.createRadialGradient(100,100,0,100,100,100);
+            gradient.addColorStop(0,"red")
+            gradient.addColorStop(0.5,"green")
+            gradient.addColorStop(1,"yellow")
+            ctx.beginPath();
+            ctx.arc(100,100,100,0,Math.PI*2,false)
+            ctx.fillStyle=gradient
+            ctx.stroke()
+            ctx.fill()
+            ctx.fillStyle="yellow";
+            ctx.fillRect(0,0,400,350)
+            for (var i=0;i<10;i++){
+                ctx.beginPath()
+                ctx.arc(i*25,i*25,i*10,0,Math.PI*2,false)
+                ctx.fillStyle="rgba(255,0,0,0.5)"
+                ctx.fill()
+            }
+        }
+    </script>
+</head>
+<body>
+<canvas id="mycanvas" with="1500" height="1500"></canvas>
+</body>
+</html>
