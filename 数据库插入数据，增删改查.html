@@ -2,9 +2,36 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>$Title$</title>
+    <title>增删改查</title>
+    <script>
+        var request;
+        function create() {
+            var request = indexedDB.open("MyData");
+            request.onerror = function (event) {
+                alert(event.target.errorCode);
+            };
+            request.onupgradeneeded = function (event) {
+                var db = request.result;
+                if (!db.objectStoreNames.contains("employees")) {
+                    var objectStore = db.createObjectStore("employees", {keyPath: "id"});
+                    objectStore.createIndex("email", "email", {unique: true});
+                }
+            };
+            var data = {
+                "id": 10,
+                "name": "张三",
+                "age": "35",
+                "email": "zhangsan@just.edu.cn"
+            }
+            var trans = db.transaction("employees", IDBTransaction.READ_WRITE);
+            var store = trans.objectStore("employees");
+            var request1 = store.add(data);
+            request1.onsuccess = function (event) {
+                alert("成功！ id = " + event.target.result);
+            }
+        }
+    </script>
 </head>
 <body>
-$END$
 </body>
 </html>

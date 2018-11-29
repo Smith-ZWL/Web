@@ -25,10 +25,9 @@
           var reader=new FileReader();
           reader.readAsDataURL(f);
           reader.onload=function(f){
-              document.getElementById("result").innerHTML="<img src="+this.result+">";
+              document.getElementById("result").innerHTML='<img src='+this.result+'>';
           }
       }
 </script>
 </body>
 </html>
-//莫名其妙将this.result外面的双引号改为单引号就没用。

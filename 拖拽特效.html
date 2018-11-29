@@ -6,7 +6,7 @@
     <style>
         *{
             margin: 0;
-            padding: 0;
+            padding: 0;【【【【
         }
         body{
             background: #000000;
@@ -79,7 +79,7 @@
             //TODO 假设求得了上一次鼠标的位置
             var minusX = thisX - pervX,
                 minusY = thisY - pervY;
-            rotateX -= minusX*0.1;
+            rotateX += minusX*0.1;
             rotateY +=minusY*0.1;
             imgWarp.style.transform = "rotateX("+ rotateX+"deg) rotateY("+rotateY+"deg)";
             pervX = thisX;//新的值用完就变成旧的值

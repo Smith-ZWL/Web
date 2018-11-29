@@ -21,8 +21,8 @@
     function showPosition(position) {
         x.innerHTML = "Latitude:"+position.coords.latitude+"<br/>Longitude:"+position.coords.longitude;
         var latlon = position.coords.latitude+","+position.coords.longitude;
-        var img_url = "http://maps.googleapis.com/maps/api/staticmap?center=" +latlon+"&zoom=14&size=400x300&sensor=false";
-        document.getElementById("demo").innerHTML = "<img src='"+img_url+"' />";
+        var img_url = "http://maps.googleapis.com/maps/api/staticmap?center=" +latlon+ "&zoom=14&size=400x300&sensor=false";
+        document.getElementById("demo").innerHTML = "<img src="+img_url+" />";
     }
     function showError(positionError) {
         switch (positionError.code) {
@@ -31,7 +31,7 @@
                 break;
             case positionError.POSITION_UNAVAILABLE:
                 x.innerHTML = "地理位置信息无法获得"
-                break;
+                break;9
             case positionError.TIMEOUT:
                 x.innerHTML = "获取地理位置信息请求超时"
                 break;
@@ -43,3 +43,4 @@
 </script>
 </body>
 </html>
+//谷歌地图拒绝访问

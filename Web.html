@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script type="text/javascript">
+function loadXMLDoc(url) {
+ xmlhttp=null;
+ if (window.XMLHttpRequest) {
+  //其他浏览器
+  xmlhttp=new XMLHttpRequest();
+ } else if(window.ActiveXObject) {
+  //IE浏览器
+  xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+ }
+ if (xmlhttp!=null) {
+ xmlhttp.onreadystatechange=state_Change;
+ //初始化HTTP请求参数
+ xmlhttp.open("GET",url,true);
+ //发送HTTP请求
+ xmlhttp.send(null);
+ //指定响应处理函数
+ xmlhttp.onreadystatechange=stateChange;
+}else{
+	alert("您的浏览器不支持XMLHTTP.")
+}
+function stateChange() {
+ if (xmlhttp.readyState == 4) {
+   if (xmlhttp.status == 200) {
+     //请求成功
+     document.getElementById("A1")
+       .innerHTML=xmlhttp.status;
+     document.getElementById("A2")
+       .innerHTML=xmlhttp.statusText;
+     document.getElementById("A3")
+       .innerHTML=xmlhttp.responseText;
+   } else {
+     alert("接收数据时有问题"+xmlhttp.statusText);
+   }
+ }
+}
+</script>
+</head>
+<body>
+<p>Status:<span id="A1"></span></p>
+<p>StatusText:<span id="A2"></span></p>
+<p>ResponseText:<span id="A3"></span></p>
+<button 
+  onclick="loadXMLDoc('xml/example.xml')">
+  获取XML文件</button>
+</body>
+</html>
